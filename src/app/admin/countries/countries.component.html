@@ -1,0 +1,57 @@
+<loading-cursor *ngIf="isBusy"></loading-cursor>
+<div class="card" style="margin-top:10px;">
+	<div class="card-header">
+		Countries
+	</div>
+	<div class="card-block">
+		<ul class="list-group country-list" *ngIf="countries && !activeCountry">
+			<li class="list-group-item list-group-item-action" *ngFor="let country of countries" (click)="selectCountry(country)" [class.active]="country === activeCountry">
+				{{country.name}}
+			</li>
+
+		</ul>
+	</div>
+</div>
+<!--
+<div class="col-lg-12 col-md-12 country-list">
+	<div class="card card-primary">
+		<div class="card-header">
+			<div class="row">
+				<h3 class="col-md-6 panel-title">{{panelTitle}}</h3>
+				<span class="col-md-6 text-right">
+					<i class="fa fa-spinner fa-spin"  *ngIf="isBusy"></i>
+					<i class="fa fa-plus-square"
+					(click)="addCountry()"></i>
+					</span>
+			</div>
+		</div>
+		<div class="card-block">
+			<div *ngIf="showCountryForm">
+				<form [formGroup]="newCountryForm" novalidate (ngSubmit)="saveCountry(newCountryForm.value)" (countryAdded)="onCountryAdded($event)">
+					<div class="form-group">
+						<input type="text" class="form-control" formControlName="name">
+
+					</div>
+					<button type="submit" class="btn btn-xs btn-primary">Save</button>
+				</form>
+			</div>
+			<ul class="list-group list-group-flush" *ngIf="countries && !activeCountry">
+				<li class="list-group-item" *ngFor="let country of countries" (click)="selectCountry(country)" [class.active]="country === activeCountry">
+					{{country.name}}
+				</li>
+
+			</ul>
+			<ul class="list-group" *ngIf="activeCountry && !activeRegion">
+				<li class="list-group-item" *ngFor="let region of activeCountry.regions" [class.active]="region === activeRegion" (click)="selectRegion(region)">
+					{{region.name}}</li>
+			</ul>
+			<ul class="list-group" *ngIf="activeRegion">
+				<li class="list-group-item" *ngFor="let subRegion of activeRegion.subRegions">
+					{{subRegion.name}}</li>
+
+			</ul>
+		</div>
+	</div>
+
+</div>
+{{activeCountry?.name}} {{activeRegion?.name}} -->

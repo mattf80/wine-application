@@ -1,0 +1,10 @@
+<div id="search-component" class="form-group">
+  <h4>Wine Search</h4>
+  <input class="form-control" #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div class="list-group">
+    <div>
+      <a  *ngFor="let wine of wines | async" (click)="gotoDetail(wine)" class="list-group-item list-group-item-action">{{wine.name}}</a>
+    </div>
+  </div>
+</div>
+

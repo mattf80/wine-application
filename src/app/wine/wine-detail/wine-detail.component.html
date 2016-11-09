@@ -1,0 +1,61 @@
+<div class="row">
+	<button class="btn btn-secondary" (click)="gotoWines()">Go back</button>
+	<button class="btn btn-danger delete" (click)="deleteWine(wine)">Delete this wine</button>
+</div>
+
+
+<div class="container">
+<div class="col-sm-2">
+	list of actions
+</div>
+
+	<div *ngIf="wine">
+		<div class="col-sm-8">
+			<div class="card">
+				<div class="card-block">
+					<h4 class="card-title">{{wine.name}} {{wine.vintage}}</h4>
+				</div>
+				<div class="card-block">
+					<table class="table table-responsive">
+						<thead>
+							<tr>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Origin</td>
+								<td>{{wine.countryName}} / {{wine.regionName}}</td>
+							</tr>
+							<tr>
+								<td>Colour</td>
+								<td>{{wine.colour}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-block">
+					<h4 class="card-title">Tasting Notes</h4>
+				</div>
+				<div class="card-block">
+					<ul class="list-group" *ngIf="wine.tastingNotes">
+						<li class="list-group-item" *ngFor="let note of wine.tastingNotes">
+							<span class="tag tag-default tag-pill float-xs-right">{{note.score}} / 10</span>{{note.notes}}
+						</li>
+					</ul>
+				</div>
+			</div>
+			<tasting-note-form [wine]="wine" (noteCreated)="onNoteCreated($event)"></tasting-note-form>
+		</div>
+		<div class="col-sm-2">
+			<div class="card wine-detail" id="wine-image">
+				<img [src]="wine.imageUrl" [alt]="wine.name">
+			</div>
+		</div>
+
+	</div>

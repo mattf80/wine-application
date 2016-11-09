@@ -1,0 +1,20 @@
+<table *ngIf="wines" class="table table-responsive table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Vintage</th>
+      <th>Colour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let wine of wines"
+    (click)="onSelect(wine)"
+    [class.selected]="isSelected(wine)">
+      <td>{{wine.name}}</td>
+      <td>{{wine.countryName}}</td>
+      <td>{{wine.vintage}}</td>
+      <td>{{wine.colour}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,8 @@
+.country-list li {
+    cursor: pointer;
+}
+
+.country-list i {
+    padding-left: 5px;
+    cursor: pointer;
+}

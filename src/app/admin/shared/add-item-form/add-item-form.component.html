@@ -1,0 +1,7 @@
+<form [formGroup]="newCountryForm" novalidate (ngSubmit)="saveCountry(newCountryForm.value)">
+	<div class="form-group">
+		<input type="text" class="form-control" formControlName="name">
+
+	</div>
+	<button type="submit" class="btn btn-xs btn-primary">Save</button>
+</form>

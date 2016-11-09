@@ -1,0 +1,44 @@
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value)">
+	<!-- we will place our fields here -->
+	<div class="form-group">
+		<label>Name</label>
+		<input type="text" formControlName="name">
+		<!--display error message if name is not valid-->
+		<small *ngIf="myForm.controls.name.invalid && myForm.controls.name.touched" class="text-danger">
+            Country name is required (minimum 5 characters).
+        </small>
+	</div>
+
+	<div formArrayName="regions">
+		<div *ngFor="let region of myForm.controls.regions.controls, let i = index">
+			<div>
+				<span>Region {{i + 1}}</span>
+				<span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.regions.controls.length > 1" (click)="removeRegion(i)">
+				</span>
+			</div>
+			<div [formGroupName]="i">
+				<div>
+					<label>Name</label>
+					<input type="text" formControlName="name">
+					<small [hidden]="myForm.controls.regions.controls[i].controls.name.valid">
+						Region name is required
+					</small>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="margin-20">
+		<a (click)="addRegion()" style="cursor: default">
+            Add another region +
+          </a>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-9">
+			<button type="reset" class="btn btn-secondary" [routerLink]="['/wines']">Cancel</button>
+			<button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+		</div>
+	</div>
+</form>

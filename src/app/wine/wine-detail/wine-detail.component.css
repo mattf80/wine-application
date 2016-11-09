@@ -1,0 +1,28 @@
+.wine-detail img {
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+textarea {
+    width: 100%;
+}
+
+button.delete {
+  float:right;
+  margin-top: 2px;
+  margin-right: .8em;
+}
+
+div {
+    border: 1px solid red;
+}
+
+div.container {
+    border: 1px solid blue;
+}
+
+#wine-image img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
